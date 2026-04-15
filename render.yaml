@@ -1,0 +1,29 @@
+############################################################
+# render.yaml — Deploy Wiki.js pe Render
+# Baza de date: Neon.tech (PostgreSQL extern)
+############################################################
+
+services:
+  - type: web
+    name: wiki-intern
+    runtime: node
+    region: frankfurt
+    plan: free
+    branch: main
+    buildCommand: npm install --production
+    startCommand: node server
+    healthCheckPath: /healthz
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: DB_NAME
+        sync: false
