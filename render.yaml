@@ -10,7 +10,7 @@ services:
     region: frankfurt
     plan: free
     branch: main
-    buildCommand: npm install --legacy-peer-deps
+    buildCommand: npm install --legacy-peer-deps && NODE_OPTIONS=--openssl-legacy-provider npm run build
     startCommand: node server
     healthCheckPath: /healthz
 
